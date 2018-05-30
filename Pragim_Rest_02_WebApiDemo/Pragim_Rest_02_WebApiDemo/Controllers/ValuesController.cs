@@ -7,34 +7,42 @@ using System.Web.Http;
 
 namespace Pragim_Rest_02_WebApiDemo.Controllers
 {
-    //[Authorize]
-    //public class ValuesController : ApiController
-    //{
-    //    // GET api/values
-    //    public IEnumerable<string> Get()
-    //    {
-    //        return new string[] { "value1", "value2" };
-    //    }
+  //[Authorize]
+  public class ValuesController : ApiController
+  {
+    static List<string> strings = new List<string>()
+    {
+       "value0","value1","value2"
+    };
 
-    //    // GET api/values/5
-    //    public string Get(int id)
-    //    {
-    //        return "value";
-    //    }
+    // GET api/values
+    public IEnumerable<string> Get()
+    {
+      return strings;
+    }
 
-    //    // POST api/values
-    //    public void Post([FromBody]string value)
-    //    {
-    //    }
+    // GET api/values/5
+    public string Get(int id)
+    {
+      return strings[id];
+    }
 
-    //    // PUT api/values/5
-    //    public void Put(int id, [FromBody]string value)
-    //    {
-    //    }
+    // POST api/values
+    public void Post([FromBody]string value)
+    {
+      strings.Add(value);
+    }
 
-    //    // DELETE api/values/5
-    //    public void Delete(int id)
-    //    {
-    //    }
-    //}
+    // PUT api/values/5
+    public void Put(int id, [FromBody]string value)
+    {
+      strings[id] = value;
+    }
+
+    // DELETE api/values/5
+    public void Delete(int id)
+    {
+      strings.RemoveAt(id);
+    }
+  }
 }
